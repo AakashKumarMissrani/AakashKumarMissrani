@@ -42,6 +42,22 @@
 
 ---
 
+## 👤 Author
+
+<div align="center">
+
+**Aakash Meghwar** — Computational Linguist · NLP Engineer · Low-Resource Language Advocate
+
+[![GitHub](https://img.shields.io/badge/GitHub-AakashKumarMissrani-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AakashKumarMissrani)
+[![HuggingFace](https://img.shields.io/badge/🤗-aakashMeghwar01-ff6b35?style=for-the-badge)](https://huggingface.co/aakashMeghwar01)
+
+*Building NLP infrastructure for the 80 million Sindhi speakers who deserve better tools.*
+
+</div>
+
+---
+---
+
 ## ⚡ Why sindhinltk?
 
 Sindhi is spoken by **~80 million people** yet has virtually zero open-source NLP tooling. This library changes that.
@@ -272,23 +288,6 @@ cd SindhiNLTK
 pip install -e .
 python -m pytest
 ```
-
----
-
-## 👤 Author
-
-<div align="center">
-
-**Aakash Meghwar** — Computational Linguist · NLP Engineer · Low-Resource Language Advocate
-
-[![GitHub](https://img.shields.io/badge/GitHub-AakashKumarMissrani-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AakashKumarMissrani)
-[![HuggingFace](https://img.shields.io/badge/🤗-aakashMeghwar01-ff6b35?style=for-the-badge)](https://huggingface.co/aakashMeghwar01)
-
-*Building NLP infrastructure for the 80 million Sindhi speakers who deserve better tools.*
-
-</div>
-
----
 
 ## 📄 License
 
