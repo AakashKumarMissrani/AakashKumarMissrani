@@ -18,6 +18,33 @@
 </div>
 
 ## 🧠 About Me
+```python
+aakash = {
+    "name"       : "Aakash Meghwar",
+    "location"   : "Nizhny Novgorod, Russia 🇷🇺  ←→  Pakistan 🇵🇰",
+    "education"  : "MSc @ HSE — Higher School of Economics (2024–)",
+    "mission"    : "Bridge linguistics and AI for low-resource languages",
+    "research"   : [
+        "🤖 SindhiLM — Sindhi Language Model (Qwen2.5 fine-tune)",
+        "🔤 SindhiLM-Tokenizer — Morpheme-aware BPE for Sindhi",
+        "📊 Sindhi Corpus 505M — largest open Sindhi pretraining corpus",
+        "📦 sindhinltk — first open-source Sindhi NLP Python library",
+        "💬 Sentiment Analysis · ✍️ Computational Stylistics · CL",
+    ],
+    "languages"  : {
+        "Sindhi" : "Native 🌙",
+        "Urdu"   : "Native ✨",
+        "English": "C2 🔥",
+        "Russian": "A2 📖",
+    },
+    "looking_for": "🎓 PhD position in NLP / Computational Linguistics",
+    "open_to"    : "🔬 Research collaboration · NLP consulting · Open source",
+    "fun_fact"   : "🌙 Building NLP tools for 80M Sindhi speakers from scratch",
+}
+```
+
+> 🌐 **Full animated portfolio:** [aakashkumarmissrani.github.io/AakashKumarMissrani](https://aakashkumarmissrani.github.io/AakashKumarMissrani)
+
 
 <div align="center">
 
