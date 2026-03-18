@@ -21,7 +21,6 @@
 
 <div align="center">
 
-[![profile card](https://raw.githubusercontent.com/AakashKumarMissrani/AakashKumarMissrani/main/profile_card.html)](https://github.com/AakashKumarMissrani)
 
 </div>
 
