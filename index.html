@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aakash Meghwar — Computational Linguist & NLP Engineer</title>
+<meta name="description" content="Computational Linguist, NLP Engineer, building SindhiLM and open-source Sindhi NLP tools. PhD seeker."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#060910;
+  --surface:#0d1117;
+  --surface2:#111827;
+  --border:#1e2d3d;
+  --cyan:#00d9ff;
+  --orange:#ff6b35;
+  --purple:#a78bfa;
+  --green:#3fb950;
+  --pink:#f472b6;
+  --text:#e6edf3;
+  --muted:#8b949e;
+  --dim:#484f58;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Sora',sans-serif;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+/* ── Animated background ── */
+.bg-grid{
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(0,217,255,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,217,255,0.025) 1px,transparent 1px);
+  background-size:50px 50px;
+  pointer-events:none;z-index:0;
+}
+.bg-orbs{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);animation:drift 12s ease-in-out infinite;}
+.orb1{width:400px;height:400px;background:rgba(0,217,255,0.05);top:-100px;left:-100px;animation-delay:0s;}
+.orb2{width:350px;height:350px;background:rgba(255,107,53,0.04);bottom:-80px;right:-80px;animation-delay:-4s;}
+.orb3{width:300px;height:300px;background:rgba(167,139,250,0.04);top:40%;left:60%;animation-delay:-8s;}
+@keyframes drift{
+  0%,100%{transform:translate(0,0);}
+  33%{transform:translate(30px,-20px);}
+  66%{transform:translate(-20px,30px);}
+}
+
+/* ── Layout ── */
+main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 24px 80px;}
+
+/* ── Hero ── */
+.hero{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;padding:80px 0 60px;
+}
+.hero-avatar{
+  width:90px;height:90px;border-radius:50%;
+  background:linear-gradient(135deg,var(--cyan),var(--orange));
+  display:flex;align-items:center;justify-content:center;
+  font-size:42px;margin-bottom:24px;
+  animation:avatarPulse 3s ease-in-out infinite;
+}
+@keyframes avatarPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(0,217,255,0.3);}
+  50%{box-shadow:0 0 0 14px rgba(0,217,255,0);}
+}
+.hero h1{
+  font-size:clamp(2rem,5vw,3.2rem);
+  font-weight:800;line-height:1.15;
+  background:linear-gradient(135deg,var(--text) 40%,var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:12px;
+}
+.hero-sub{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(0.8rem,2vw,0.95rem);
+  color:var(--muted);
+  margin-bottom:28px;
+  letter-spacing:0.5px;
+}
+.hero-sub .sep{color:var(--dim);margin:0 8px;}
+
+/* Typing text */
+.typing-wrap{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(0.85rem,2vw,1rem);
+  color:var(--cyan);
+  margin-bottom:36px;
+  height:24px;
+}
+.cursor{
+  display:inline-block;
+  width:2px;height:1.1em;
+  background:var(--cyan);
+  vertical-align:text-bottom;
+  animation:blink 0.9s step-end infinite;
+  margin-left:2px;
+}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+/* Badges */
+.badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:36px;}
+.badge{
+  display:flex;align-items:center;gap:7px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:8px;padding:7px 14px;
+  font-size:12px;color:var(--muted);
+  text-decoration:none;
+  transition:border-color 0.2s,color 0.2s,transform 0.2s;
+  font-family:'JetBrains Mono',monospace;
+}
+.badge:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px);}
+.badge-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+/* ── Section ── */
+section{margin-bottom:48px;opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+section.visible{opacity:1;transform:translateY(0);}
+.sec-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--dim);
+  margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── Profile card ── */
+.profile-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+}
+.profile-row{
+  display:flex;align-items:flex-start;
+  gap:14px;padding:14px 20px;
+  border-bottom:1px solid var(--border);
+  transition:background 0.2s;
+}
+.profile-row:last-child{border-bottom:none;}
+.profile-row:hover{background:rgba(255,255,255,0.03);}
+.p-icon{font-size:20px;width:30px;flex-shrink:0;padding-top:2px;text-align:center;}
+.p-label{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+.p-value{font-size:13.5px;color:#c9d1d9;line-height:1.6;}
+.p-value strong{color:var(--text);}
+.p-value .hi{color:var(--cyan);}
+.p-value .or{color:var(--orange);}
+.p-value .gr{color:var(--green);}
+
+/* Tags */
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+.tag{
+  background:rgba(167,139,250,0.1);
+  border:1px solid rgba(167,139,250,0.2);
+  color:var(--purple);
+  font-size:11px;font-family:'JetBrains Mono',monospace;
+  padding:3px 10px;border-radius:6px;
+}
+
+/* Lang chips */
+.lang-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+.lchip{
+  display:flex;align-items:center;gap:6px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;padding:4px 12px;
+  font-size:12px;color:#c9d1d9;
+}
+.ldot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+/* ── Project cards ── */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.proj-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;padding:20px;
+  text-decoration:none;
+  transition:border-color 0.2s,transform 0.2s;
+  display:block;
+}
+.proj-card:hover{border-color:var(--cyan);transform:translateY(-3px);}
+.proj-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.proj-icon{font-size:24px;}
+.proj-name{font-size:15px;font-weight:600;color:var(--text);}
+.proj-desc{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:12px;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.proj-tag{
+  font-size:10px;font-family:'JetBrains Mono',monospace;
+  background:rgba(0,217,255,0.08);
+  border:1px solid rgba(0,217,255,0.15);
+  color:var(--cyan);padding:2px 8px;border-radius:4px;
+}
+.proj-status{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-family:'JetBrains Mono',monospace;
+  padding:2px 8px;border-radius:4px;margin-top:10px;
+}
+.status-live{background:rgba(63,185,80,0.1);border:1px solid rgba(63,185,80,0.2);color:var(--green);}
+.status-wip{background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.2);color:var(--orange);}
+.status-soon{background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);color:var(--purple);}
+.status-dot{width:5px;height:5px;border-radius:50%;background:currentColor;}
+
+/* ── Publications ── */
+.pub-list{display:flex;flex-direction:column;gap:12px;}
+.pub{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-left:3px solid var(--cyan);
+  border-radius:0 10px 10px 0;
+  padding:16px 20px;
+  transition:border-left-color 0.2s;
+}
+.pub:hover{border-left-color:var(--orange);}
+.pub-venue{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--cyan);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+.pub-title{font-size:13.5px;color:var(--text);font-weight:600;line-height:1.5;margin-bottom:6px;}
+.pub-meta{font-size:11.5px;color:var(--muted);}
+
+/* ── Skills ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;}
+.skill{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:8px;padding:10px 12px;
+  font-size:12px;font-family:'JetBrains Mono',monospace;
+  color:var(--muted);text-align:center;
+  transition:border-color 0.2s,color 0.2s;
+}
+.skill:hover{border-color:var(--purple);color:var(--purple);}
+
+/* ── Open to banner ── */
+.open-banner{
+  display:flex;align-items:center;gap:14px;
+  background:linear-gradient(135deg,rgba(255,107,53,0.08),rgba(0,217,255,0.06));
+  border:1px solid rgba(255,107,53,0.2);
+  border-radius:12px;padding:18px 22px;
+}
+.blink-dot{width:10px;height:10px;border-radius:50%;background:var(--orange);flex-shrink:0;animation:blink 1.4s ease-in-out infinite;}
+.open-text{font-size:13.5px;color:var(--text);font-family:'JetBrains Mono',monospace;line-height:1.6;}
+.open-text span{color:var(--orange);font-weight:600;}
+
+/* ── Footer ── */
+footer{
+  text-align:center;
+  padding:32px 0 0;
+  color:var(--dim);
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  border-top:1px solid var(--border);
+}
+footer a{color:var(--cyan);text-decoration:none;}
+footer a:hover{text-decoration:underline;}
+
+/* ── Fade in on scroll ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.hero>*{animation:fadeUp 0.7s ease both;}
+.hero-avatar{animation-delay:0.1s;}
+.hero h1{animation-delay:0.2s;}
+.hero-sub{animation-delay:0.3s;}
+.typing-wrap{animation-delay:0.4s;}
+.badges{animation-delay:0.5s;}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<main>
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-avatar">🧠</div>
+    <h1>Aakash Meghwar</h1>
+    <div class="hero-sub">
+      Computational Linguist <span class="sep">·</span>
+      NLP Engineer <span class="sep">·</span>
+      Low-Resource Language Researcher
+    </div>
+    <div class="typing-wrap">
+      <span id="typed"></span><span class="cursor"></span>
+    </div>
+    <div class="badges">
+      <a class="badge" href="https://github.com/AakashKumarMissrani" target="_blank">
+        <div class="badge-dot" style="background:#fff"></div>GitHub
+      </a>
+      <a class="badge" href="https://huggingface.co/aakashMeghwar01" target="_blank">
+        <div class="badge-dot" style="background:#ff6b35"></div>HuggingFace
+      </a>
+      <a class="badge" href="https://pypi.org/project/sindhinltk/" target="_blank">
+        <div class="badge-dot" style="background:#00d9ff"></div>sindhinltk · PyPI
+      </a>
+      <a class="badge" href="https://www.linkedin.com/in/aakash-kumar-missrani-06b267154/" target="_blank">
+        <div class="badge-dot" style="background:#0a66c2"></div>LinkedIn
+      </a>
+      <a class="badge" href="mailto:aakashmeghwar01@gmail.com">
+        <div class="badge-dot" style="background:#ea4335"></div>Email
+      </a>
+      <a class="badge" href="https://texttechsolutions.com" target="_blank">
+        <div class="badge-dot" style="background:#3fb950"></div>texttechsolutions.com
+      </a>
+    </div>
+  </div>
+
+  <!-- ── ABOUT ── -->
+  <section>
+    <div class="sec-label">About</div>
+    <div class="profile-card">
+      <div class="profile-row">
+        <div class="p-icon">📍</div>
+        <div>
+          <div class="p-label">Location</div>
+          <div class="p-value">🇷🇺 Nizhny Novgorod, Russia &nbsp;←→&nbsp; Pakistan 🇵🇰</div>
+        </div>
+      </div>
+      <div class="profile-row">
+        <div class="p-icon">🎓</div>
+        <div>
+          <div class="p-label">Education</div>
+          <div class="p-value"><strong>MSc</strong> @ Higher School of Economics (HSE) — Nizhny Novgorod <span class="hi">(2024–)</span></div>
+        </div>
+      </div>
+      <div class="profile-row">
+        <div class="p-icon">🚀</div>
+        <div>
+          <div class="p-label">Mission</div>
+          <div class="p-value">Bridge linguistics and AI for <span class="or">low-resource languages</span> — starting with Sindhi, spoken by 80M people with zero NLP tooling</div>
+        </div>
+      </div>
+      <div class="profile-row">
+        <div class="p-icon">🔬</div>
+        <div>
+          <div class="p-label">Research Areas</div>
+          <div class="tags">
+            <span class="tag">🤖 SindhiLM</span>
+            <span class="tag">🔤 Tokenization</span>
+            <span class="tag">📊 Corpus Building</span>
+            <span class="tag">📦 sindhinltk</span>
+            <span class="tag">💬 Sentiment Analysis</span>
+            <span class="tag">✍️ Computational Stylistics</span>
+            <span class="tag">🧬 Morphological Analysis</span>
+            <span class="tag">🌍 Low-Resource NLP</span>
+          </div>
+        </div>
+      </div>
+      <div class="profile-row">
+        <div class="p-icon">🌍</div>
+        <div>
+          <div class="p-label">Languages</div>
+          <div class="lang-chips">
+            <div class="lchip"><div class="ldot" style="background:#00d9ff"></div>Sindhi — Native 🌙</div>
+            <div class="lchip"><div class="ldot" style="background:#ff6b35"></div>Urdu — Native ✨</div>
+            <div class="lchip"><div class="ldot" style="background:#3fb950"></div>English — C2 🔥</div>
+            <div class="lchip"><div class="ldot" style="background:#a78bfa"></div>Russian — A2 📖</div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-row">
+        <div class="p-icon">😄</div>
+        <div>
+          <div class="p-label">Fun fact</div>
+          <div class="p-value">Building NLP tools for <span class="hi">80 million</span> Sindhi speakers — <span class="or">from scratch</span> 🌙</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section>
+    <div class="sec-label">Flagship Projects</div>
+    <div class="projects">
+      <a class="proj-card" href="https://huggingface.co/aakashMeghwar01/SindhiLM-Qwen-0.5B" target="_blank">
+        <div class="proj-header"><div class="proj-icon">🤖</div><div class="proj-name">SindhiLM</div></div>
+        <div class="proj-desc">Sindhi Language Model — fine-tuning Qwen2.5-0.5B on 505M token Sindhi corpus. First transformer dedicated to Sindhi.</div>
+        <div class="proj-tags"><span class="proj-tag">Qwen2.5</span><span class="proj-tag">Fine-tuning</span><span class="proj-tag">Sindhi</span></div>
+        <div class="proj-status status-wip"><div class="status-dot"></div>In Training</div>
+      </a>
+      <a class="proj-card" href="https://huggingface.co/aakashMeghwar01/SindhiLM-Tokenizer-v1" target="_blank">
+        <div class="proj-header"><div class="proj-icon">🔤</div><div class="proj-name">SindhiLM-Tokenizer</div></div>
+        <div class="proj-desc">Morpheme-aware BPE tokenizer merged into Qwen2.5. v1 live with 7,978 Sindhi tokens. v2 with SindhiNLTK pre-seg coming.</div>
+        <div class="proj-tags"><span class="proj-tag">BPE</span><span class="proj-tag">Morphology</span><span class="proj-tag">+7,978 tokens</span></div>
+        <div class="proj-status status-live"><div class="status-dot"></div>v1 Live</div>
+      </a>
+      <a class="proj-card" href="https://pypi.org/project/sindhinltk/" target="_blank">
+        <div class="proj-header"><div class="proj-icon">📦</div><div class="proj-name">sindhinltk</div></div>
+        <div class="proj-desc">First open-source Python NLP library for Sindhi. Zero deps. Tokenizer · Normalizer · Stemmer · Stopwords · Sentiment.</div>
+        <div class="proj-tags"><span class="proj-tag">PyPI</span><span class="proj-tag">Pure Python</span><span class="proj-tag">MIT</span></div>
+        <div class="proj-status status-live"><div class="status-dot"></div>pip install sindhinltk</div>
+      </a>
+      <a class="proj-card" href="https://huggingface.co/datasets/aakashMeghwar01/sindhi-corpus-505m" target="_blank">
+        <div class="proj-header"><div class="proj-icon">📊</div><div class="proj-name">Sindhi Corpus 505M</div></div>
+        <div class="proj-desc">Largest open-source deduplicated Sindhi pretraining corpus. 742K docs · ~505M tokens · 11 source datasets.</div>
+        <div class="proj-tags"><span class="proj-tag">742K docs</span><span class="proj-tag">505M tokens</span><span class="proj-tag">Apache 2.0</span></div>
+        <div class="proj-status status-live"><div class="status-dot"></div>Live on HuggingFace</div>
+      </a>
+      <a class="proj-card" href="https://huggingface.co/aakashMeghwar01/aurat-march-sentiment-minilm" target="_blank">
+        <div class="proj-header"><div class="proj-icon">💬</div><div class="proj-name">Aurat March Sentiment</div></div>
+        <div class="proj-desc">MiniLM fine-tuned for feminist discourse sentiment. English · Urdu · Sindhi. Linked to SSRN publication 2025.</div>
+        <div class="proj-tags"><span class="proj-tag">MiniLM</span><span class="proj-tag">Sentiment</span><span class="proj-tag">Multilingual</span></div>
+        <div class="proj-status status-live"><div class="status-dot"></div>Live</div>
+      </a>
+      <a class="proj-card" href="https://huggingface.co/aakashMeghwar01/urdu-poetry-transformer" target="_blank">
+        <div class="proj-header"><div class="proj-icon">✍️</div><div class="proj-name">Urdu Poetry Transformer</div></div>
+        <div class="proj-desc">Compact transformer for classical Urdu poetry generation and stylistics. Related to Springer 2026 publication.</div>
+        <div class="proj-tags"><span class="proj-tag">Stylistics</span><span class="proj-tag">Urdu</span><span class="proj-tag">Springer 2026</span></div>
+        <div class="proj-status status-live"><div class="status-dot"></div>Live</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── PUBLICATIONS ── -->
+  <section>
+    <div class="sec-label">Publications & Research</div>
+    <div class="pub-list">
+      <div class="pub">
+        <div class="pub-venue">Springer · Language Resources and Evaluation · 2026</div>
+        <div class="pub-title">Compact Transformer Models for Classical Urdu Poetry: A Computational Stylistics Approach</div>
+        <div class="pub-meta">Aakash Meghwar &nbsp;·&nbsp; Transformers · Urdu NLP · Low-Resource · Computational Stylistics</div>
+      </div>
+      <div class="pub">
+        <div class="pub-venue">SSRN eJournal · 2025</div>
+        <div class="pub-title">The Comparative Analysis of How the Aurat March Movement is Represented in British and Pakistani Pro-Government Press</div>
+        <div class="pub-meta">Aakash Meghwar &nbsp;·&nbsp; <a href="https://ssrn.com/abstract=5579191" target="_blank" style="color:var(--cyan);text-decoration:none;">Read on SSRN →</a> &nbsp;·&nbsp; Critical Discourse Analysis · Corpus Linguistics</div>
+      </div>
+      <div class="pub">
+        <div class="pub-venue">78th Herzen Readings · St. Petersburg, Russia · April 2025</div>
+        <div class="pub-title">Sentiment Analysis of International Students' Online Reviews: A Case Study of Experiences and Adaptation in Russian Universities</div>
+        <div class="pub-meta">Aakash Meghwar &nbsp;·&nbsp; Sentiment Analysis · NLP · Computational Linguistics</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section>
+    <div class="sec-label">Tech Stack</div>
+    <div class="skills-grid">
+      <div class="skill">🐍 Python</div>
+      <div class="skill">🔥 PyTorch</div>
+      <div class="skill">🤗 Transformers</div>
+      <div class="skill">⛓️ LangChain</div>
+      <div class="skill">📊 scikit-learn</div>
+      <div class="skill">🧮 TensorFlow</div>
+      <div class="skill">📓 Jupyter</div>
+      <div class="skill">☁️ Azure</div>
+      <div class="skill">🤖 IBM Watson</div>
+      <div class="skill">📈 Pandas</div>
+      <div class="skill">🔢 NumPy</div>
+      <div class="skill">🔤 spaCy</div>
+      <div class="skill">📦 PyPI</div>
+      <div class="skill">🐙 Git</div>
+      <div class="skill">📝 LaTeX</div>
+      <div class="skill">📊 R</div>
+    </div>
+  </section>
+
+  <!-- ── OPEN TO ── -->
+  <section>
+    <div class="sec-label">Open To</div>
+    <div class="open-banner">
+      <div class="blink-dot"></div>
+      <div class="open-text">
+        Seeking <span>PhD position</span> in NLP / Computational Linguistics &nbsp;·&nbsp;
+        Open to <span>research collaboration</span> on low-resource South Asian languages &nbsp;·&nbsp;
+        Available for <span>NLP consulting</span> via texttechsolutions.com
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>
+    <a href="https://github.com/AakashKumarMissrani">GitHub</a> &nbsp;·&nbsp;
+    <a href="https://huggingface.co/aakashMeghwar01">HuggingFace</a> &nbsp;·&nbsp;
+    <a href="https://pypi.org/project/sindhinltk/">PyPI</a> &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/aakash-kumar-missrani-06b267154/">LinkedIn</a> &nbsp;·&nbsp;
+    <a href="mailto:aakashmeghwar01@gmail.com">aakashmeghwar01@gmail.com</a>
+  </p>
+  <p style="margin-top:12px;opacity:0.4">"There are 7,000 languages. Most have zero NLP tooling. Let's fix that." — Aakash Meghwar</p>
+  <p style="margin-top:8px;padding-bottom:32px;opacity:0.3">© 2025 Aakash Meghwar</p>
+</footer>
+
+<script>
+const lines = [
+  "Building SindhiLM — transformer for Sindhi 🌙",
+  "pip install sindhinltk",
+  "80M Sindhi speakers deserve NLP tools",
+  "PhD seeker in Computational Linguistics 🎓",
+  "Low-resource NLP researcher @ HSE Russia",
+  "Founder @ Text Tech Solutions",
+];
+let li=0, ci=0, deleting=false;
+const el = document.getElementById('typed');
+function type(){
+  const line = lines[li];
+  if(!deleting){
+    el.textContent = line.slice(0,++ci);
+    if(ci===line.length){ deleting=true; setTimeout(type,2000); return; }
+  } else {
+    el.textContent = line.slice(0,--ci);
+    if(ci===0){ deleting=false; li=(li+1)%lines.length; setTimeout(type,400); return; }
+  }
+  setTimeout(type, deleting ? 30 : 55);
+}
+type();
+
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.15});
+document.querySelectorAll('section').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
