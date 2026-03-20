@@ -177,7 +177,6 @@ aakash = {
 </picture>
 
 </div>
-
 ---
 
 ## 🤗 HuggingFace Activity
